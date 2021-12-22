@@ -1,0 +1,19 @@
+{
+  "name": "matoruru/chrome-extensions-auto-2fa",
+  "action": {},
+  "manifest_version": 3,
+  "version": "0.1",
+  "description": "Automates the clicking-buttons process for the Microsoft 2FA.",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://login.microsoftonline.com/*"
+      ],
+      "js": [
+        "app.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}
