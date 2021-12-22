@@ -40,7 +40,7 @@ const getButtons = () => {
       if (textButton.textContent.includes('Text +') && callButton.textContent.includes('Call +')) {
         resolve({textButton, callButton})
       } else {
-        appLog('Buttons were not detected as expected!')
+        appLog('Buttons are not existing as expected!')
         reject()
       }
     }, intervalTime)
