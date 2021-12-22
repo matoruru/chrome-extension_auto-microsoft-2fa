@@ -4,6 +4,11 @@
   "manifest_version": 3,
   "version": "0.1",
   "description": "Automates the clicking-buttons process for the Microsoft 2FA.",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
   "permissions": [],
   "content_scripts": [
     {
