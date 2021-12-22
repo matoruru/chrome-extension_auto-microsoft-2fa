@@ -1,6 +1,6 @@
 const logLabel = 'matoruru/chrome-extensions-auto-microsoft-2fa: '
 
-const appLog = (s) => console.log(`${logLabel} ${s}`)
+const appLog = (...args) => console.log(`${logLabel} `, ...args)
 
 const intervalTime = 50
 
@@ -18,8 +18,7 @@ const checkTitle = () => {
       if (title.textContent.includes('Verify your identity')) {
         resolve()
       } else {
-        appLog(`Title is not correct ("${title.textContent}"). This migit be another page!`)
-        reject()
+        reject(`Title is not correct ("${title.textContent}"). This migit be another page!`)
       }
     }, intervalTime)
   })
@@ -40,15 +39,13 @@ const getButtons = () => {
       if (textButton.textContent.includes('Text +') && callButton.textContent.includes('Call +')) {
         resolve({textButton, callButton})
       } else {
-        appLog('Buttons are not existing as expected!')
-        reject()
+        reject('Buttons are not existing as expected!')
       }
     }, intervalTime)
   })
 }
 
 const app = async () => {
-
   // Check if the title is "Verify your identity".
   await checkTitle()
 
@@ -60,12 +57,15 @@ const app = async () => {
   //
   const { textButton, callButton } = await getButtons()
 
-  callButton.click()
+  //callButton.click()
+  appLog('Selected button clicked!')
 }
 
 const main = (e) => {
   appLog('Microsoft 2FA page detected!')
-  app()
+  app().catch(e => {
+    appLog('Something went wrong! Reason: ', e)
+  })
 };
 
 window.addEventListener("load", main, false);
