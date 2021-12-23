@@ -1,5 +1,6 @@
-# chrome-extensions-auto-microsoft-2fa
-I don't like clicking "Call me" button every time when the multi-factor screen shows up! This automates it for you.
+# Auto Microsoft 2FA
+
+This automates the clicking-buttons process for the Microsoft 2FA for you.
 
 # Usage
 
