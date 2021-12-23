@@ -7,11 +7,11 @@ const intervalTime = 50
 const checkTitle = () => {
   return new Promise((resolve, reject) => {
     const timerId = setInterval(() => {
-      const titleElements = document.getElementsByClassName('row text-title')
+      const titleElements = Array.from(document.querySelectorAll('[role=heading]'))
 
       if (titleElements.length == 0) return
 
-      const title = titleElements.item(0)
+      const title = titleElements[0]
 
       clearInterval(timerId)
 
@@ -27,12 +27,12 @@ const checkTitle = () => {
 const getButtons = () => {
   return new Promise((resolve, reject) => {
     const timerId = setInterval(() => {
-      const buttonsElements = document.getElementsByClassName('table')
+      const buttonsElements = Array.from(document.querySelectorAll('div.table[role=button]'))
 
       if (buttonsElements.length == 0) return
 
-      const textButton = buttonsElements.item(0)
-      const callButton = buttonsElements.item(1)
+      const textButton = buttonsElements[0]
+      const callButton = buttonsElements[1]
 
       clearInterval(timerId)
 
