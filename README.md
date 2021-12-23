@@ -4,7 +4,7 @@ This automates the clicking-buttons process for the Microsoft 2FA for you.
 
 # Installation
 
-Since this is not published on the store yet so you have to use **developer mode** for this ...
+Since this is not published on the store yet so you have to use **developer mode** for now ...
 
 1. Clone this repo.
 
