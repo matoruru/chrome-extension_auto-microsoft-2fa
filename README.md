@@ -12,7 +12,7 @@ Since this is not published on the store yet so you have to use **developer mode
    git clone git@github.com:matoruru/chrome-extension_auto-microsoft-2fa.git -b wip-initial
    ```
 
-1. Enable developer mode [here](chrome://extensions/).
+1. Enable developer mode from `chrome://extensions/`.
 
 1. Click *Load unpacked*.
 
