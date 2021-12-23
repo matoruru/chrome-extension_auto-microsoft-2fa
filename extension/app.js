@@ -4,21 +4,23 @@ const appLog = (...args) => console.log(`${logLabel} `, ...args)
 
 const intervalTime = 50
 
+const hasText = (elem, s) => elem.textContent.includes(s)
+
+const pickElement = (elems, s) => elems.filter(elem => hasText(elem, s))[0]
+
 const checkTitle = () => {
   return new Promise((resolve, reject) => {
     const timerId = setInterval(() => {
-      const titleElements = Array.from(document.querySelectorAll('[role=heading]'))
+      const title = document.querySelector('[role=heading]')
 
-      if (titleElements.length == 0) return
-
-      const title = titleElements[0]
+      if (!title) return
 
       clearInterval(timerId)
 
-      if (title.textContent.includes('Verify your identity')) {
+      if (hasText(title, 'Verify your identity')) {
         resolve()
       } else {
-        reject(`Title is not correct ("${title.textContent}"). This migit be another page!`)
+        reject(`Title is not correct (Expected "Verify your identity" but "${title.textContent}"). This migit be another page!`)
       }
     }, intervalTime)
   })
@@ -31,13 +33,13 @@ const getButtons = () => {
 
       if (buttonsElements.length == 0) return
 
-      const textButton = buttonsElements[0]
-      const callButton = buttonsElements[1]
+      const textButton = pickElement(buttonsElements, 'Text +')
+      const callButton = pickElement(buttonsElements, 'Call +')
 
       clearInterval(timerId)
 
-      if (textButton.textContent.includes('Text +') && callButton.textContent.includes('Call +')) {
-        resolve({textButton, callButton})
+      if (textButton || callButton) {
+        resolve({ textButton, callButton })
       } else {
         reject('Buttons are not existing as expected!')
       }
@@ -57,8 +59,18 @@ const app = async () => {
   //
   const { textButton, callButton } = await getButtons()
 
-  //callButton.click()
-  appLog('Selected button clicked!')
+  const priorityOrderButtons = [
+    callButton,
+    textButton
+  ]
+
+  for (const button of priorityOrderButtons) {
+    if (button) {
+      button.click()
+      appLog(`Selected button clicked!`)
+      return
+    }
+  }
 }
 
 const main = (e) => {
