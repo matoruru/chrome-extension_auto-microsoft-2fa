@@ -1,4 +1,4 @@
-const logLabel = 'matoruru/chrome-extensions-auto-microsoft-2fa: '
+const logLabel = 'matoruru/chrome-extension_auto-microsoft-2fa: '
 
 const appLog = (...args) => console.log(`${logLabel} `, ...args)
 
