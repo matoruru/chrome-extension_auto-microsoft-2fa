@@ -1,0 +1,24 @@
+{
+  "name": "Auto Microsoft 2FA",
+  "action": {},
+  "manifest_version": 3,
+  "version": "0.1",
+  "description": "Automates the clicking-buttons process for the Microsoft 2FA.",
+  "icons": {
+    "16": "assets/icons/16.png",
+    "48": "assets/icons/48.png",
+    "128": "assets/icons/128.png"
+  },
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://login.microsoftonline.com/*"
+      ],
+      "js": [
+        "app.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}
