@@ -7,7 +7,7 @@ This automates the clicking-buttons process for the Microsoft 2FA for you.
 1. Clone this repo.
 
    ```
-   git clone git@github.com:matoruru/chrome-extension_auto-microsoft-2fa.git -b wip-initial
+   git clone git@github.com:matoruru/chrome-extension_auto-microsoft-2fa.git
    ```
 
 1. **Enable** developer mode from `chrome://extensions/`.
